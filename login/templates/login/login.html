@@ -2,29 +2,59 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Importando o CSS do Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Login</h2>
+<body class="bg-light">
 
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: red;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-
-    <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
+    <!-- Container flexível centralizado -->
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 py-5">
         
-        <label>Email:</label><br>
-        <input type="text" name="email" required><br><br>
+        <!-- Cartão (Card) com largura um pouco menor que o de cadastro -->
+        <div class="card shadow-lg p-4 p-md-5" style="width: 100%; max-width: 450px; border-radius: 15px;">
+            <h2 class="mb-4 text-center fw-bold text-primary">Login</h2>
 
-        <label>Senha:</label><br>
-        <input type="password" name="senha" required><br><br>
+            <!-- Bloco de Mensagens de erro/sucesso do Django -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
 
-        <button type="submit">Entrar</button>
-    </form>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                
+                <!-- Campo: E-mail -->
+                <div class="mb-3">
+                    <label for="id_email" class="form-label text-muted fw-semibold">E-mail:</label>
+                    <input type="email" name="email" id="id_email" class="form-control" placeholder="Digite seu e-mail" required>
+                </div>
 
-    <p>Não tem conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+                <!-- Campo: Senha -->
+                <div class="mb-4">
+                    <label for="id_senha" class="form-label text-muted fw-semibold">Senha:</label>
+                    <input type="password" name="senha" id="id_senha" class="form-control" placeholder="Digite sua senha" required>
+                </div>
+
+                <!-- Botão de Submit -->
+                <!-- Usei btn-primary (azul) para Login, combinando com o botão da página inicial -->
+                <button type="submit" class="btn btn-primary btn-lg w-100">Entrar</button>
+            </form>
+
+            <!-- Link de Cadastro no rodapé do card -->
+            <div class="mt-4 text-center">
+                <p class="mb-0 text-muted">Não tem conta? <a href="{% url 'cadastro' %}" class="fw-bold text-decoration-none">Cadastre-se</a></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Importando o JS do Bootstrap 5 (Necessário para fechar os alertas) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
