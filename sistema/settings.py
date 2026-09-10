@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cadastro',
     'login',
     'painel',
+    'sistema'
 ]
 
 MIDDLEWARE = [
@@ -99,16 +100,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        
     },
+    
 ]
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -129,11 +132,22 @@ STATIC_URL = 'static/'
 #         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
 #     },
 # }
+
+
 # Configuração de E-mail (Gmail SMTP)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ''        # Seu e-mail completo do Gmail
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = 'lucasfdantasrj@gmail.com'        # Seu e-mail completo do Gmail
+    EMAIL_HOST_PASSWORD = ''
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+# Login Redirect URL
+LOGIN_REDIRECT_URL = 'painel_redirect'
+# Login URL para redirecionamento de usuários não autenticados
+LOGIN_URL = 'login'

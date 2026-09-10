@@ -71,7 +71,7 @@ def cadastro(request):
             f"{activation_url}\n\n"
             f"Se você não solicitou este cadastro, ignore este e-mail."
         )
-
+        
         send_mail(assunto, mensagem, None, [user.email], fail_silently=False)
 
         messages.success(
@@ -80,9 +80,6 @@ def cadastro(request):
         )
         return redirect("login")
     return render(request, "cadastro/cadastro.html")
-
-
-
 
 def ativar_conta(request, uidb64, token):
     try:
