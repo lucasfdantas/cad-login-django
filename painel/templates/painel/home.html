@@ -26,7 +26,10 @@
                     <h2 class="h4 fw-bold mb-1">Bem-vindo ao Painel!</h2>
                     <p class="text-muted mb-0 fs-5">Olá, <span class="text-primary fw-semibold">{{ request.user.first_name }}</span>!</p>
                 </div>
-                
+                <form action="{% url 'view_administrador' %}" method="POST" class="m-0">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger px-4 fw-bold">ADMINISTRADOR</button>
+                </form>
                 <!-- Botão de Logout -->
                 <form action="{% url 'logout' %}" method="POST" class="m-0">
                     {% csrf_token %}

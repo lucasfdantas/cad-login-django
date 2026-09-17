@@ -130,3 +130,5 @@ def painel_redirect(request):
     
     # Se não tiver grupo ou for superusuário sem grupo definido
     raise PermissionDenied
+
+    

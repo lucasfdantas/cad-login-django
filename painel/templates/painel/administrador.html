@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
 </head>
+
 <body>
     <h1>ADMIN</h1>
+
+
+
+
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome de Usuário</th>
+                    <th>Email</th>
+                    <th>Grupo Atual</th>
+                    <th>Novo Grupo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr> 
+                    <td>{{ usuario.first_name }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>
+                        {% for grupo in usuario.groups.all %}
+                            <span>{{ grupo.name }}</span>
+                        {% empty %}
+                            <span>Sem grupo</span>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <!-- O name identifica o usuário, e o value selecionado enviará o ID do grupo -->
+                        <select name="grupo_usuario_{{ usuario.id }}" id="grupo_{{ usuario.id }}">
+                            <option value="">-- Selecione para alterar --</option>
+                            <option value="1">Administradores</option>
+                            <option value="2">Diretoria</option>
+                            <option value="3">Gerencia Geral</option>
+                            <option value="4">Gerencia</option>
+                            <option value="5">Supervisão</option>
+                            <option value="6">Atendente</option>
+                            <option value="7">Caixa</option>
+                        </select>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align: center;">Nenhum usuário encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <br>
+        {% if usuarios %}
+            <button type="submit">Salvar Alterações</button>
+        {% endif %}
+    </form>
+
+
 </body>
+
 </html>
