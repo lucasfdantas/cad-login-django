@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <h2>Lista de compras</h2>
+    <ul>
+        {% for item in carrinho.values %}
+        <!-- <p>{{item}}</p> -->
+        <li>
+            <p><strong>Nome: </strong> {{item.nome}} <br></p>
+            <p><strong>Preço: </strong>{{item.preco}} <br></p>
+            <p><strong>Quantidade: </strong>{{item.qtd}} <br></p>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <!-- {{carrinho.items}} -->
+
+</body>
+</html>

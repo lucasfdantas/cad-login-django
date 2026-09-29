@@ -7,9 +7,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # Lista dos grupos existentes
-        nomes_grupos = ['administradores', 'diretoria', 'gerencia_geral', 'gerencia', 'supervisao', 'atendente', 'caixa']
+        nomes_grupos = ['administradores', 'diretoria', 'gerencia_geral', 'gerencia', 'supervisao', 'atendente', 'caixa', 'cliente']
         senha_padrao = 'dev12345'
-        first_name = ['Administrador', 'Diretoria', 'Gerência Geral', 'Gerência', 'Supervisão', 'Atendente', 'Caixa']
+        first_name = ['Administrador', 'Diretoria', 'Gerência Geral', 'Gerência', 'Supervisão', 'Atendente', 'Caixa','Cliente']
 
         for nome in nomes_grupos:
             username = f'user_{nome}'

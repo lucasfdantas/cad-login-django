@@ -43,4 +43,10 @@ urlpatterns = [
     path('painel/supervisao/', painel_views.view_supervisao, name='view_supervisao'),
     path('painel/atendente/', painel_views.view_atendente, name='view_atendente'),
     path('painel/caixa/', painel_views.view_caixa, name='view_caixa'),
+    
+    #rotas de carrinho e checkout
+    path('carrinho/checkout/', painel_views.view_checkout, name='view_checkout'),
+    path('carrinho/loja/', painel_views.loja_carrinho, name='loja_carrinho'),
+    path('carrinho/lista_carrinho/',painel_views.lista_carrinho, name='lista_carrinho'),
+
 ]

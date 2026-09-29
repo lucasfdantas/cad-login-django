@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-
+    {% include 'includes/nav.html' %}
+<p>Olá, {{ request.user.first_name }}!</p>
     <!-- Container principal com espaçamento no topo e fundo -->
     <div class="container py-5 min-vh-100">
         
@@ -16,7 +17,6 @@
         <div class="text-center mb-4">
             <h1 class="fw-bold text-primary">PAINEL PRINCIPAL <span class="text-danger">- RESTRITO</span></h1>
         </div>
-
         <!-- Cartão (Card) mais largo para acomodar a tabela -->
         <div class="card shadow-lg p-4 p-md-5 mx-auto" style="max-width: 900px; border-radius: 15px;">
             
@@ -36,10 +36,8 @@
                     <button type="submit" class="btn btn-outline-danger px-4 fw-bold">Sair da Conta</button>
                 </form>
             </div>
-
             <!-- Linha divisória charmosa -->
             <hr class="mb-4 text-muted">
-
             <!-- Tabela Estilizada -->
             <h5 class="mb-3 fw-semibold text-secondary">Lista de Usuários</h5>
             
@@ -66,11 +64,8 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
-
     </div>
-
     <!-- Importando o JS do Bootstrap 5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
