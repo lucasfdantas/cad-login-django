@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<h2>Lista de compras</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Acrescentar/Retirar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in carrinho.values %}
+        <tr>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.preco }}</td>
+            <td>{{ item.qtd }}</td>
+            <td>
+                <!-- Botão para diminuir a quantidade -->
+                <form action="" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" value="{{item.id}}">
+                    <input type="hidden" name="acao" value="menos_item">
+                    <button type="submit" aria-label="Diminuir quantidade">-</button>
+                </form>
+
+                <!-- Botão para aumentar a quantidade -->
+                <form action="" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" value="{{item.id}}">
+                    <input type="hidden" name="acao" value="mais_item">
+                    <button type="submit" aria-label="Aumentar quantidade">+</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2"><strong>Total:</strong></td>
+            <td><strong>{{ total }}</strong></td>
+        </tr>
+    </tfoot>
+</table>
+
+    <a href="{% url 'loja_carrinho' %}"><button type="submit">Compra +</button></a>
+    <!-- {{carrinho.items}} -->
+    <a href="{% url 'view_checkout' %}"><button type="submit">Finalizar Compra</button></a>
+
+</body>
+</html>

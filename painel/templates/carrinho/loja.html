@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{%url 'login' %}"><button type="button">Login</button></a>
+            <a href="{% url 'lista_carrinho' %}"><button type="button">Carrinho</button></a>
+        </nav>
+        <h1>Catálogo de Produtos</h1>
+        <p>Confira as nossas melhores ofertas abaixo.</p>
+    </header>    
+
+    <main>
+        
+        <article>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <img src="https://placehold.co/300x250/eeeeee/999999?text=Imagem+do+Produto+1" alt="Placeholder para o primeiro produto">
+                <h2>Câmera Digital Profissional</h2>
+                <p>Capture momentos incríveis com resolução 4K e lentes intercambiáveis. Ideal para fotografia e vídeo.</p>
+                <p>Preço: <strong>R$ 3.200,00</strong></p>
+
+                <input type="number" name="quantidade" value='1' min="1" required>
+                <input type="hidden" name='produto_id' value="1">
+                <input type="hidden" name="nome_produto" value="Camera_digital_pro">
+                <input type="hidden" name="preco_produto" value="3200.00">
+                <button type="submit">Adicionar ao Carrinho</button>
+            </form>
+
+        </article>
+
+        <article>
+            <form action="" method="POST">
+                {% csrf_token %}
+            <img src="https://placehold.co/300x250/eeeeee/999999?text=Imagem+do+Produto+2" alt="Placeholder para o segundo produto">
+            <h2>Teclado Mecânico RGB</h2>
+            <p>Teclado mecânico com switches azuis, retroiluminação personalizável e design ergonômico.</p>
+            <p>Preço: <strong>R$ 350,00</strong></p>
+
+            <input type="number" name="quantidade" value="1" min="1" required>
+            <input type="hidden" name='produto_id' value="2">
+            <input type="hidden" name="nome_produto" value="tc_mecanico">
+            <input type="hidden" name="preco_produto" value="350.00">
+            <button type="submit" >Adicionar ao Carrinho</button>
+        </form>
+        </article>
+
+        <article>
+            <form action="" method="POST">
+                {% csrf_token %}
+            <img src="https://placehold.co/300x250/eeeeee/999999?text=Imagem+do+Produto+3" alt="Placeholder para o terceiro produto">
+            <h2>Monitor Ultrawide 29"</h2>
+            <p>Visão imersiva para jogos e produtividade. Resolução 2560x1080 com taxa de atualização de 75Hz.</p>
+            <p>Preço: <strong>R$ 1.150,00</strong></p>
+            <input type="number" name="quantidade" value="1" min="1" required>
+            <input type="hidden" name='produto_id' value="3">
+            <input type="hidden" name="nome_produto" value="monitor-ultra-29">
+            <input type="hidden" name="preco_produto" value="1150.00">
+
+            <button type="submit">Adicionar ao Carrinho</button>
+        </form>
+        </article>
+
+        <article>
+            <form action="" method="POST">
+                {% csrf_token %}
+            <img src="https://placehold.co/300x250/eeeeee/999999?text=Imagem+do+Produto+4" alt="Placeholder para o quarto produto">
+            <h2>Cadeira Gamer Ergonômica</h2>
+            <p>Conforto extremo para longas horas. Inclui almofadas lombar e cervical ajustáveis.</p>
+            <p>Preço: <strong>R$ 890,00</strong></p>
+            <input type="number" name="quantidade" value="1" min="1" required>
+            <input type="hidden" name='produto_id' value="4">
+            <input type="hidden" name="nome_produto" value="cadeira_ergo">
+            <input type="hidden" name="preco_produto" value="890.00">
+            <button type="submit">Adicionar ao Carrinho</button>
+        </form>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Loja de Eletrônicos. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
